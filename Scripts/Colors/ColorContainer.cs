@@ -9,6 +9,15 @@ namespace N8Sprite.Colors
         public readonly ConsoleColor ForegroundColor;
         public readonly ConsoleColor BackgroundColor;
 
+        public int Hue
+        {
+            get
+            {
+                Color.RGBToHSV(Color, out float __hue, out float __saturation, out float __value);
+                return Mathf.RoundToInt(__hue * 10f);
+            }
+        }
+
         public ColorContainer(in Color color, in ConsoleColor consoleColor)
         {
             Color = color;

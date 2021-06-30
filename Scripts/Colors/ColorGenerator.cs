@@ -7,7 +7,7 @@ namespace N8Sprite.Colors
 {
     public static class ColorGenerator
     {
-        public static IEnumerable<ColorContainer> AllColors => _baseColors.Concat(MixedColors);
+        public static IEnumerable<ColorContainer> AllColors => _baseColors.Concat(MixedColors).ToArray().SortColorsByHue();
         
         private static readonly ColorContainer[] _baseColors = 
         {
@@ -29,6 +29,13 @@ namespace N8Sprite.Colors
             new ColorContainer(new Color32(255, 255, 255, 255), ConsoleColor.White),
         };
         private static IEnumerable<ColorContainer> MixedColors => GenerateMixedColors();
+
+        private static IEnumerable<ColorContainer> SortColorsByHue(this ColorContainer[] colors)
+        {
+            Array.Sort(colors, (firstColor, secondColor) => firstColor.Hue - secondColor.Hue);
+            return colors;
+        }
+        
 
         private static IEnumerable<ColorContainer> GenerateMixedColors()
         {
