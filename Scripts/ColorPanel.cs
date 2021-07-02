@@ -1,7 +1,6 @@
-﻿using N8Sprite.Colors;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace N8Sprite.UI
+namespace N8Sprite
 {
     public sealed class ColorPanel : MonoBehaviour
     {

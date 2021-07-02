@@ -1,13 +1,12 @@
-﻿using N8Sprite.Colors;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace N8Sprite.UI
+namespace N8Sprite
 {
     [RequireComponent(typeof(Image))]
     public sealed class ColorImage : MonoBehaviour
     {
-        public static Color SelectedColor { get; private set; }
+        public static Color SelectedColor { get; private set; } = UnityEngine.Color.black;
         
         public ColorContainer Color
         {

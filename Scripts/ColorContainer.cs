@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace N8Sprite.Colors
+namespace N8Sprite
 {
     public readonly struct ColorContainer
     {

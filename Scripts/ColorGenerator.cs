@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace N8Sprite.Colors
+namespace N8Sprite
 {
     public static class ColorGenerator
     {
-        public static IEnumerable<ColorContainer> AllColors => _baseColors.Concat(MixedColors).ToArray().SortColorsByHue();
+        public static IEnumerable<ColorContainer> AllColors
+        {
+            get
+            {
+                if (_hasInitializedAllColors)
+                    return _allColors;
+                _hasInitializedAllColors = true;
+                _allColors = _baseColors.Concat(MixedColors).ToArray().SortColorsByHue();
+                return _allColors;
+            }
+        }
+        private static IEnumerable<ColorContainer> _allColors;
+        private static bool _hasInitializedAllColors = false;
         
         private static readonly ColorContainer[] _baseColors = 
         {
