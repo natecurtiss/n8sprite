@@ -35,8 +35,7 @@ namespace N8Sprite.Colors
             Array.Sort(colors, (firstColor, secondColor) => firstColor.Hue - secondColor.Hue);
             return colors;
         }
-        
-
+       
         private static IEnumerable<ColorContainer> GenerateMixedColors()
         {
             List<ColorContainer> __mixedColors = new List<ColorContainer>();

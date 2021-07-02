@@ -7,6 +7,8 @@ namespace N8Sprite.UI
     [RequireComponent(typeof(Image))]
     public sealed class ColorImage : MonoBehaviour
     {
+        public static Color SelectedColor { get; private set; }
+        
         public ColorContainer Color
         {
             set
@@ -19,5 +21,7 @@ namespace N8Sprite.UI
         private Image _image;
 
         private void Awake() => _image = GetComponent<Image>();
+
+        public void ChangeSelectedColor() => SelectedColor = _color.Color;
     }
 }
