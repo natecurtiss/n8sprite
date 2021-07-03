@@ -5,8 +5,14 @@ using UnityEngine;
 
 namespace N8Sprite
 {
+    /// <summary>
+    /// Contains properties for generating combinations of <see cref="ConsoleColor">ConsoleColors.</see>
+    /// </summary>
     public static class ColorGenerator
     {
+        /// <summary>
+        /// All of the possible <see cref="ConsoleColor"/> combinations.
+        /// </summary>
         public static IEnumerable<ColorContainer> AllColors
         {
             get
@@ -18,9 +24,18 @@ namespace N8Sprite
                 return _allColors;
             }
         }
+        /// <summary>
+        /// Backing field for <see cref="AllColors"/>.
+        /// </summary>
         private static IEnumerable<ColorContainer> _allColors;
-        private static bool _hasInitializedAllColors = false;
+        /// <summary>
+        /// True when <see cref="AllColors"/> has been assigned (to prevent calling <see cref="AllColors">AllColors'</see> expensive getter more than once).
+        /// </summary>
+        private static bool _hasInitializedAllColors;
         
+        /// <summary>
+        /// All 16 of the base <see cref="ConsoleColor">ConsoleColors.</see>
+        /// </summary>
         private static readonly ColorContainer[] _baseColors = 
         {
             new ColorContainer(new Color32(0, 0, 0, 255), ConsoleColor.Black),
@@ -40,14 +55,25 @@ namespace N8Sprite
             new ColorContainer(new Color32(255, 255, 0, 255), ConsoleColor.Yellow),
             new ColorContainer(new Color32(255, 255, 255, 255), ConsoleColor.White),
         };
+        /// <summary>
+        /// All of the possible mixes of the 16 <see cref="_baseColors"/>.
+        /// </summary>
         private static IEnumerable<ColorContainer> MixedColors => GenerateMixedColors();
 
+        /// <summary>
+        /// Returns an <see cref="IEnumerable{ColorContainer}"/> of <see cref="ColorContainer">ColorContainers</see> sorted by <see cref="ColorContainer.Hue"/>.
+        /// </summary>
+        /// <param name="colors"> The array of <see cref="ColorContainer">ColorContainers</see> to sort. </param>
         private static IEnumerable<ColorContainer> SortColorsByHue(this ColorContainer[] colors)
         {
             Array.Sort(colors, (firstColor, secondColor) => firstColor.Hue - secondColor.Hue);
             return colors;
         }
        
+        /// <summary>
+        /// Returns an <see cref="IEnumerable{ColorContainer}"/> of all 130 possible combinations of the <see cref="_baseColors"/>, which includes the <see cref="_baseColors"/>,
+        /// and is without any duplicates (<see cref="ConsoleColor.Black"/> + <see cref="ConsoleColor.White"/> == <see cref="ConsoleColor.Gray"/>).
+        /// </summary>
         private static IEnumerable<ColorContainer> GenerateMixedColors()
         {
             List<ColorContainer> __mixedColors = new List<ColorContainer>();
@@ -69,6 +95,10 @@ namespace N8Sprite
             return __mixedColors;
         }
         
+        /// <summary>
+        /// Returns an <see cref="IEnumerable{ColorContainer}"/> of all 136 possible combinations of the <see cref="_baseColors"/>, which includes the <see cref="_baseColors"/>,
+        /// and is with the 6 duplicates (<see cref="ConsoleColor.Black"/> + <see cref="ConsoleColor.White"/> == <see cref="ConsoleColor.Gray"/>).
+        /// </summary>
         private static IEnumerable<ColorContainer> GenerateMixedColorsFull()
         {
             List<ColorContainer> __mixedColors = new List<ColorContainer>();

@@ -7,11 +7,30 @@ namespace N8Sprite
     [RequireComponent(typeof(RawImage), typeof(RectTransform))]
     public sealed class PixelCanvas : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
+        [SerializeField]
+        private Vector2Int MaxCanvasSize = new Vector2Int(1000, 1000);
+        
         private RawImage _rawImage;
         private RectTransform _rectTransform;
         private Texture2D _texture;
 
         private bool _isMouseOver;
+
+        private Vector2Int CurrentPixelClicked
+        {
+            get
+            {
+                RectTransformUtility.ScreenPointToLocalPointInRectangle
+                (
+                    _rectTransform, 
+                    Input.mousePosition,
+                    Camera.main, 
+                    out Vector2 __localPoint
+                );
+                Vector2Int __textureCoordinate = new Vector2Int(Mathf.FloorToInt(__localPoint.x + _texture.width / 2f), Mathf.FloorToInt(__localPoint.y + _texture.height / 2f));
+                return __textureCoordinate;
+            }
+        }
         
         public void OnPointerEnter(PointerEventData eventData) => _isMouseOver = true;
 
@@ -23,9 +42,9 @@ namespace N8Sprite
             _rawImage = GetComponent<RawImage>();
         }
 
-        private void Start() => CreateTexture(new Vector2Int(32, 32));
+        private void Start() => CreateTexture(MaxCanvasSize);
         
-        private void CreateTexture(Vector2Int size)
+        private void CreateTexture(in Vector2Int size)
         {
             _texture = new Texture2D(size.x, size.y, TextureFormat.ARGB32, false)
             {
@@ -46,16 +65,8 @@ namespace N8Sprite
 
         private void Paint()
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle
-            (
-                _rectTransform, 
-                Input.mousePosition,
-                Camera.main, 
-                out Vector2 __localPoint
-            );
-            Vector2Int __textureCoordinate = new Vector2Int(Mathf.FloorToInt(__localPoint.x + _texture.width / 2f), Mathf.FloorToInt(__localPoint.y + _texture.height / 2f));
-
-            Color __colorToPaint = PaintTools.SelectedTool == Tool.Brush ? ColorImage.SelectedColor : Color.clear;
+            Vector2Int __textureCoordinate = CurrentPixelClicked;
+            Color __colorToPaint = CanvasOptions.SelectedTool == Tool.Brush ? CanvasOptions.SelectedColor : Color.clear;
             _texture.SetPixel(__textureCoordinate.x, __textureCoordinate.y, __colorToPaint);
             _texture.Apply();
         }

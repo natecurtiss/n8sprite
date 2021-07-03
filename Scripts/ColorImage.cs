@@ -6,8 +6,6 @@ namespace N8Sprite
     [RequireComponent(typeof(Image))]
     public sealed class ColorImage : MonoBehaviour
     {
-        public static Color SelectedColor { get; private set; } = UnityEngine.Color.black;
-        
         public ColorContainer Color
         {
             set
@@ -21,6 +19,6 @@ namespace N8Sprite
 
         private void Awake() => _image = GetComponent<Image>();
 
-        public void ChangeSelectedColor() => SelectedColor = _color.Color;
+        public void ChangeSelectedColor() => CanvasOptions.SelectedColor = _color.Color;
     }
 }
