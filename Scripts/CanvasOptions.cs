@@ -12,7 +12,7 @@ namespace N8Sprite
         /// Pixels will be painted if equal to <see cref="Tool.Brush"/>, and will be erased if equal to <see cref="Tool.Eraser">Tool.Eraser.</see>
         /// </summary>
         public static Tool SelectedTool = Tool.Brush;
-        public const int MAXIMUM_SIZE = 1024;
+        public const int MAXIMUM_SIZE = 128;
         public const int MINIMUM_SIZE = 8;
     }
 }

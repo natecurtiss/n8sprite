@@ -7,6 +7,8 @@ namespace N8Sprite
     [RequireComponent(typeof(RawImage), typeof(RectTransform))]
     public sealed class PixelCanvas : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
+        [SerializeField]
+        private RectTransform Parent;
         private RectTransform _rectTransform;
         private RawImage _rawImage;
         private Texture2D _texture;
@@ -33,6 +35,7 @@ namespace N8Sprite
         {
             _rectTransform = GetComponent<RectTransform>();
             _rawImage = GetComponent<RawImage>();
+            Parent.sizeDelta = Vector2.one * CanvasOptions.MAXIMUM_SIZE;
         }
 
         private void Start() => CreateTexture(Vector2Int.one * CanvasOptions.MAXIMUM_SIZE);
