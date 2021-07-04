@@ -35,7 +35,7 @@ namespace N8Sprite
             _rawImage = GetComponent<RawImage>();
         }
 
-        private void Start() => CreateTexture(CanvasOptions.MaximumSize);
+        private void Start() => CreateTexture(Vector2Int.one * CanvasOptions.MAXIMUM_SIZE);
 
         private void Update()
         {
@@ -68,17 +68,11 @@ namespace N8Sprite
             _texture.Apply();
         }
 
-        public void ChangeWidth(in int width)
+        public void ChangeSize(in int size)
         {
             Vector3 __localScale = _rectTransform.localScale;
-            __localScale.x = 1 * (CanvasOptions.MinimumSize.x / (float) width);
-            _rectTransform.localScale = __localScale;
-        }
-
-        public void ChangeHeight(in int height)
-        {
-            Vector3 __localScale = _rectTransform.localScale;
-            __localScale.y = 1 * (CanvasOptions.MinimumSize.y / (float) height);
+            __localScale.x = 1 * (CanvasOptions.MINIMUM_SIZE / (float) size);
+            __localScale.y = __localScale.x;
             _rectTransform.localScale = __localScale;
         }
     }
