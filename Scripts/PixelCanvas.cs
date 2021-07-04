@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -12,6 +13,9 @@ namespace N8Sprite
         private RectTransform _rectTransform;
         private RawImage _rawImage;
         private Texture2D _texture;
+
+        [SerializeField, Range(0.1f, 1f)]
+        private float ResizeAnimationTime = 0.1f;
 
         private bool _isMouseOver;
 
@@ -76,7 +80,8 @@ namespace N8Sprite
             Vector3 __localScale = _rectTransform.localScale;
             __localScale.x = 1 * (CanvasOptions.MINIMUM_SIZE / (float) size);
             __localScale.y = __localScale.x;
-            _rectTransform.localScale = __localScale;
+            _rectTransform.DOKill();
+            _rectTransform.DOScale(__localScale, ResizeAnimationTime);
         }
     }
 }
