@@ -7,11 +7,8 @@ namespace N8Sprite
     [RequireComponent(typeof(RawImage), typeof(RectTransform))]
     public sealed class PixelCanvas : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField]
-        private Vector2Int MaxCanvasSize = new Vector2Int(1000, 1000);
-        
-        private RawImage _rawImage;
         private RectTransform _rectTransform;
+        private RawImage _rawImage;
         private Texture2D _texture;
 
         private bool _isMouseOver;
@@ -31,10 +28,6 @@ namespace N8Sprite
                 return __textureCoordinate;
             }
         }
-        
-        public void OnPointerEnter(PointerEventData eventData) => _isMouseOver = true;
-
-        public void OnPointerExit(PointerEventData eventData) => _isMouseOver = false;
 
         private void Awake()
         {
@@ -42,7 +35,16 @@ namespace N8Sprite
             _rawImage = GetComponent<RawImage>();
         }
 
-        private void Start() => CreateTexture(MaxCanvasSize);
+        private void Start() => CreateTexture(CanvasOptions.MaximumSize);
+
+        private void Update()
+        {
+            if (Input.GetMouseButton(0) && _isMouseOver) Paint();
+        }
+        
+        public void OnPointerEnter(PointerEventData eventData) => _isMouseOver = true;
+
+        public void OnPointerExit(PointerEventData eventData) => _isMouseOver = false;
         
         private void CreateTexture(in Vector2Int size)
         {
@@ -58,17 +60,26 @@ namespace N8Sprite
             _rawImage.texture = _texture;
         }
 
-        private void Update()
-        {
-            if (Input.GetMouseButton(0) && _isMouseOver) Paint();
-        }
-
         private void Paint()
         {
             Vector2Int __textureCoordinate = CurrentPixelClicked;
             Color __colorToPaint = CanvasOptions.SelectedTool == Tool.Brush ? CanvasOptions.SelectedColor : Color.clear;
             _texture.SetPixel(__textureCoordinate.x, __textureCoordinate.y, __colorToPaint);
             _texture.Apply();
+        }
+
+        public void ChangeWidth(in int width)
+        {
+            Vector3 __localScale = _rectTransform.localScale;
+            __localScale.x = 1 * (CanvasOptions.MinimumSize.x / (float) width);
+            _rectTransform.localScale = __localScale;
+        }
+
+        public void ChangeHeight(in int height)
+        {
+            Vector3 __localScale = _rectTransform.localScale;
+            __localScale.y = 1 * (CanvasOptions.MinimumSize.y / (float) height);
+            _rectTransform.localScale = __localScale;
         }
     }
 }

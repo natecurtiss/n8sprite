@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6822624463799970090}
   - component: {fileID: 6822624463799970091}
-  - component: {fileID: 4190791218328177410}
+  - component: {fileID: 4371383731249600554}
   m_Layer: 5
   m_Name: InputField_Width
   m_TagString: Untagged
@@ -80,7 +80,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 62, y: 54.5}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6822624463799970091
 MonoBehaviour:
@@ -162,9 +162,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4190791218328177410}
-        m_TargetAssemblyTypeName: N8Sprite.CanvasSize, Assembly-CSharp
-        m_MethodName: OnValueInputted
+      - m_Target: {fileID: 4371383731249600554}
+        m_TargetAssemblyTypeName: N8Sprite.PixelCanvasResizingActions, Assembly-CSharp
+        m_MethodName: OnNewWidthInputted
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 1, g: 0.65882355, b: 0.69187933, a: 0.7529412}
-  m_Text: 16
+  m_Text: 8
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &4190791218328177410
+--- !u!114 &4371383731249600554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,11 +201,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6822624463799970093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9700b14fff4379e43af6da8000630de5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4af5f800ade44de5bfa808dd6910741e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DimensionToTrack: 0
-  Text: {fileID: 6822624464526875804}
+  PixelCanvas: {fileID: 0}
+  SizeTextObject: {fileID: 6822624464526875804}
 --- !u!1 &6822624463848122994
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "16\u200B"
+  m_text: "8\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 40
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
