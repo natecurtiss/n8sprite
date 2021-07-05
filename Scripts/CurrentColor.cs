@@ -17,16 +17,16 @@ namespace N8Sprite
         private void Awake()
         {
             _image = GetComponent<Image>();
-            _targetColor = CanvasOptions.SelectedColor;
+            _targetColor = CanvasData.SelectedColor;
         }
 
         private void Update()
         {
-            if (CanvasOptions.SelectedColor == Color.clear) return;
-            if (CanvasOptions.SelectedColor != _targetColor)
+            if (CanvasData.SelectedColor == Color.clear) return;
+            if (CanvasData.SelectedColor != _targetColor)
             {
                 _image.DOKill();
-                _targetColor = CanvasOptions.SelectedColor;
+                _targetColor = CanvasData.SelectedColor;
                 _image.DOColor(_targetColor, _switchColorAnimationDuration);
             }
         }

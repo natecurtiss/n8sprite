@@ -37,14 +37,15 @@ namespace N8Sprite
         {
             _rectTransform = GetComponent<RectTransform>();
             _rawImage = GetComponent<RawImage>();
-            _parent.sizeDelta = Vector2.one * CanvasOptions.MAXIMUM_SIZE;
+            _parent.sizeDelta = Vector2.one * CanvasData.MAXIMUM_SIZE;
         }
 
-        private void Start() => CreateTexture(Vector2Int.one * CanvasOptions.MAXIMUM_SIZE);
+        private void Start() => CreateTexture(Vector2Int.one * CanvasData.MAXIMUM_SIZE);
 
         private void Update()
         {
             if (Input.GetMouseButton(0) && _isMouseOver) Paint();
+            if (Input.GetKeyDown(KeyCode.Space)) SpriteSaveSystem.Save(_texture); 
         }
 
         private void CreateTexture(Vector2Int size)
@@ -63,15 +64,16 @@ namespace N8Sprite
         private void Paint()
         {
             var textureCoordinate = CurrentPixelClicked;
-            var colorToPaint = CanvasOptions.SelectedTool == Tool.Brush ? CanvasOptions.SelectedColor : Color.clear;
+            var colorToPaint = CanvasData.SelectedTool == Tool.Brush ? CanvasData.SelectedColor : Color.clear;
             _texture.SetPixel(textureCoordinate.x, textureCoordinate.y, colorToPaint);
             _texture.Apply();
         }
 
         public void ChangeSize(int size)
         {
+            CanvasData.Size = size;
             var localScale = _rectTransform.localScale;
-            localScale.x = 1 * (CanvasOptions.MINIMUM_SIZE / (float) size);
+            localScale.x = 1 * (CanvasData.MINIMUM_SIZE / (float) size);
             localScale.y = localScale.x;
             _rectTransform.DOKill();
             _rectTransform.DOScale(localScale, _resizeAnimationTime);

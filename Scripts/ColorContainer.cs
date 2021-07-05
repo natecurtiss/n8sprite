@@ -12,7 +12,7 @@ namespace N8Sprite
         /// <summary>
         /// The result of mixing the <see cref="ForegroundColor"/> and the <see cref="BackgroundColor">BackgroundColor.</see>
         /// </summary>
-        public readonly Color Color;
+        public readonly Color32 Color;
         /// <summary>
         /// The foreground <see cref="ConsoleColor"/> to set the <see cref="Console">Console.</see>
         /// </summary>
@@ -29,7 +29,7 @@ namespace N8Sprite
         {
             get
             {
-                Color.RGBToHSV(Color, out var hue, out var saturation, out var value);
+                UnityEngine.Color.RGBToHSV(Color, out var hue, out var saturation, out var value);
                 return Mathf.RoundToInt(hue * 10f);
             }
         }
@@ -39,7 +39,7 @@ namespace N8Sprite
         /// </summary>
         /// <param name="color"> The RGBA of the base color. </param>
         /// <param name="consoleColor"> The <see cref="ConsoleColor"/> enum value of the base color. </param>
-        public ColorContainer(Color color, ConsoleColor consoleColor)
+        public ColorContainer(Color32 color, ConsoleColor consoleColor)
         {
             Color = color;
             ForegroundColor = consoleColor;
@@ -47,12 +47,13 @@ namespace N8Sprite
         }
 
         /// <summary>
-        /// A constructor to create a <see cref="ColorContainer"/> that is the result of mixing two <see cref="ConsoleColor">ConsoleColors.</see>
+        /// A constructor to create a <see cref="ColorContainer"/> that is the result of mixing two
+        /// <see cref="ConsoleColor">ConsoleColors.</see>
         /// </summary>
         /// <param name="color"> The RGBA of the mixed color. </param>
         /// <param name="foregroundColor"> The first <see cref="ConsoleColor"/> enum value. </param>
         /// <param name="backgroundColor"> The second <see cref="ConsoleColor"/> enum value. </param>
-        public ColorContainer(Color color, ConsoleColor foregroundColor, ConsoleColor backgroundColor)
+        public ColorContainer(Color32 color, ConsoleColor foregroundColor, ConsoleColor backgroundColor)
         {
             Color = color;
             ForegroundColor = foregroundColor;

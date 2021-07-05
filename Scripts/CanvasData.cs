@@ -2,7 +2,7 @@
 
 namespace N8Sprite
 {
-    public static class CanvasOptions
+    public static class CanvasData
     {
         /// <summary>
         /// The maximum size of the <see cref="PixelCanvas"/> in pixels.
@@ -12,6 +12,7 @@ namespace N8Sprite
         /// The minimum size of the <see cref="PixelCanvas"/> in pixels.
         /// </summary>
         public const int MINIMUM_SIZE = 8;
+        public static int Size { get; set; } = MINIMUM_SIZE;
         /// <summary>
         /// Pixels will be painted if equal to <see cref="Tool.Brush"/>, and will be erased if equal to
         /// <see cref="Tool.Eraser">Tool.Eraser.</see>

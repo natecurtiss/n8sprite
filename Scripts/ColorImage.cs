@@ -20,6 +20,6 @@ namespace N8Sprite
 
         private void Awake() => _image = GetComponent<Image>();
         
-        public void ChangeSelectedColor() => CanvasOptions.SelectedColor = _color.Color;
+        public void ChangeSelectedColor() => CanvasData.SelectedColor = _color.Color;
     }
 }

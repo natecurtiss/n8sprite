@@ -24,7 +24,7 @@ namespace N8Sprite
                 return;
             }
 
-            size = Mathf.Clamp(size, CanvasOptions.MINIMUM_SIZE, CanvasOptions.MAXIMUM_SIZE);
+            size = Mathf.Clamp(size, CanvasData.MINIMUM_SIZE, CanvasData.MAXIMUM_SIZE);
             _pixelCanvas.ChangeSize(size);
             _sizeTextObject.text = size.ToString();
             _currentSizeText = _sizeTextObject.text;

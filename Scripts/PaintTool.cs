@@ -10,9 +10,9 @@ namespace N8Sprite
         private static event Action<Tool> OnToolChanged;
 
         [SerializeField]
-        private string _selectedAnimatorBool = "Selected";
-        [SerializeField]
         private Tool _thisTool;
+        [SerializeField]
+        private string _selectedAnimatorBool = "Selected";
         
         private Animator _animator;
         
@@ -30,19 +30,19 @@ namespace N8Sprite
         {
             if (Input.GetKeyDown(KeyCode.B))
             {
-                CanvasOptions.SelectedTool = Tool.Brush;
+                CanvasData.SelectedTool = Tool.Brush;
                 OnToolChanged?.Invoke(Tool.Brush);
             }
             else if (Input.GetKeyDown(KeyCode.E))
             {
-                CanvasOptions.SelectedTool = Tool.Eraser;
+                CanvasData.SelectedTool = Tool.Eraser;
                 OnToolChanged?.Invoke(Tool.Eraser);
             }
         }
         
         public void ChangeTool()
         {
-            CanvasOptions.SelectedTool = _thisTool;
+            CanvasData.SelectedTool = _thisTool;
             OnToolChanged?.Invoke(_thisTool);
         }
 

@@ -63,6 +63,17 @@ namespace N8Sprite
         private static IEnumerable<ColorContainer> MixedColors => GenerateMixedColors();
 
         /// <summary>
+        /// Returns a <see cref="ColorContainer"/> that matches the <see cref="Color"/> passed in.
+        /// </summary>
+        /// <param name="color"> The <see cref="Color"/> to match. </param>
+        public static ColorContainer MatchToColorContainer(this Color color)
+        {
+            foreach (var colorContainer in AllColors)
+                if (colorContainer.Color == color) return colorContainer;
+            return new ColorContainer(Color.clear, ConsoleColor.Black);
+        }
+
+        /// <summary>
         /// Returns an <see cref="IEnumerable{ColorContainer}"/> of <see cref="ColorContainer">ColorContainers</see>
         /// sorted by <see cref="ColorContainer.Hue"/>.
         /// </summary>
@@ -85,12 +96,12 @@ namespace N8Sprite
             {
                 foreach (var otherBaseColor in _baseColors)
                 {
-                    var mix = Color.Lerp(baseColor.Color, otherBaseColor.Color, 0.5f);
-                    var newColor = new ColorContainer(mix, baseColor.ForegroundColor, otherBaseColor.ForegroundColor);
+                    var mixedColor = Color32.Lerp(baseColor.Color, otherBaseColor.Color, 0.5f);
+                    var newColor = new ColorContainer(mixedColor, baseColor.ForegroundColor, otherBaseColor.ForegroundColor);
 
                     var colorAlreadyExists = false;
-                    foreach (var existingColor in mixedColors.Where(existingColor => existingColor.Color == newColor.Color)) colorAlreadyExists = true;
-                    foreach (var existingColor in _baseColors.Where(existingColor => existingColor.Color == newColor.Color)) colorAlreadyExists = true;
+                    foreach (var existingColor in mixedColors.Where(existingColor => existingColor.Color.IsEqualTo(newColor.Color))) colorAlreadyExists = true;
+                    foreach (var existingColor in _baseColors.Where(existingColor => existingColor.Color.IsEqualTo(newColor.Color))) colorAlreadyExists = true;
 
                     if (!colorAlreadyExists) mixedColors.Add(newColor);
                 }
@@ -111,8 +122,8 @@ namespace N8Sprite
             {
                 foreach (var otherBaseColor in _baseColors)
                 {
-                    var mix = Color.Lerp(baseColor.Color, otherBaseColor.Color, 0.5f);
-                    var newColor = new ColorContainer(mix, baseColor.ForegroundColor, otherBaseColor.ForegroundColor);
+                    var mixedColor = Color32.Lerp(baseColor.Color, otherBaseColor.Color, 0.5f);
+                    var newColor = new ColorContainer(mixedColor, baseColor.ForegroundColor, otherBaseColor.ForegroundColor);
 
                     var colorAlreadyExists = false;
                     foreach (var existingColor in mixedColors)
