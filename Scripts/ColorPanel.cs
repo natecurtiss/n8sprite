@@ -1,22 +1,23 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace N8Sprite
 {
     public sealed class ColorPanel : MonoBehaviour
     {
-        [SerializeField]
-        private ColorImage ColorImage;
-
+        [FormerlySerializedAs("_colorImage")] [FormerlySerializedAs("ColorImage")] [SerializeField]
+        private ColorImage _colorImagePrefab;
+        
         private Transform _transform;
 
         private void Awake() => _transform = GetComponent<Transform>();
 
         private void Start()
         {
-            foreach (ColorContainer __color in ColorGenerator.AllColors)
+            foreach (var color in ColorGenerator.AllColors)
             {
-                ColorImage __colorImage = Instantiate(ColorImage, _transform);
-                __colorImage.Color = __color;
+                var colorImage = Instantiate(_colorImagePrefab, _transform);
+                colorImage.Color = color;
             }
         }
     }

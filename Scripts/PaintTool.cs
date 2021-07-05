@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace N8Sprite
 {
@@ -7,23 +8,23 @@ namespace N8Sprite
     public sealed class PaintTool : MonoBehaviour
     {
         private static event Action<Tool> OnToolChanged;
-        
-        [SerializeField] 
-        private Tool ThisTool;
-        
-        [SerializeField]
-        private string SelectedAnimatorBoolean = "Selected";
-        private Animator _animator;
 
+        [FormerlySerializedAs("_selectedAnimatorBoolName")] [FormerlySerializedAs("_selectedAnimatorBoolean")] [FormerlySerializedAs("SelectedAnimatorBoolean")] [SerializeField]
+        private string _selectedAnimatorBool = "Selected";
+        [FormerlySerializedAs("ThisTool")] [SerializeField]
+        private Tool _thisTool;
+        
+        private Animator _animator;
+        
         private void Awake()
         {
             _animator = GetComponent<Animator>();
             OnToolChanged += ToolChanged;
         }
+        
+        private void Start() => OnToolChanged?.Invoke(Tool.Brush);
 
         private void OnDestroy() => OnToolChanged -= ToolChanged;
-
-        private void Start() => OnToolChanged?.Invoke(Tool.Brush);
 
         private void Update()
         {
@@ -38,15 +39,19 @@ namespace N8Sprite
                 OnToolChanged?.Invoke(Tool.Eraser);
             }
         }
-
+        
         public void ChangeTool()
         {
-            CanvasOptions.SelectedTool = ThisTool;
-            OnToolChanged?.Invoke(ThisTool);
+            CanvasOptions.SelectedTool = _thisTool;
+            OnToolChanged?.Invoke(_thisTool);
         }
 
-        private void ToolChanged(Tool tool) => _animator.SetBool(SelectedAnimatorBoolean, tool == ThisTool);
+        private void ToolChanged(Tool tool) => _animator.SetBool(_selectedAnimatorBool, tool == _thisTool);
     }
-    
-    public enum Tool { Brush, Eraser }
+
+    public enum Tool
+    {
+        Brush,
+        Eraser
+    }
 }

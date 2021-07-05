@@ -6,6 +6,9 @@ namespace N8Sprite
     [RequireComponent(typeof(Image))]
     public sealed class ColorImage : MonoBehaviour
     {
+        private ColorContainer _color;
+        private Image _image;
+        
         public ColorContainer Color
         {
             set
@@ -14,11 +17,9 @@ namespace N8Sprite
                 _color = value;
             }
         }
-        private ColorContainer _color;
-        private Image _image;
 
         private void Awake() => _image = GetComponent<Image>();
-
+        
         public void ChangeSelectedColor() => CanvasOptions.SelectedColor = _color.Color;
     }
 }

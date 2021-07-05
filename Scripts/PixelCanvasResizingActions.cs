@@ -1,13 +1,14 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace N8Sprite
 {
     [RequireComponent(typeof(TMP_InputField))]
     public sealed class PixelCanvasResizingActions : MonoBehaviour
     {
-        [SerializeField]
-        private PixelCanvas PixelCanvas;
+        [FormerlySerializedAs("PixelCanvas")] [SerializeField]
+        private PixelCanvas _pixelCanvas;
         
         private TMP_InputField _sizeTextObject;
         private string _currentSizeText;
@@ -18,14 +19,15 @@ namespace N8Sprite
 
         public void OnNewSizeInputted(string sizeText)
         {
-            if (!int.TryParse(sizeText, out int __size))
+            if (!int.TryParse(sizeText, out var size))
             {
                 _sizeTextObject.text = _currentSizeText;
                 return;
             }
-            __size = Mathf.Clamp(__size, CanvasOptions.MINIMUM_SIZE, CanvasOptions.MAXIMUM_SIZE);
-            PixelCanvas.ChangeSize(__size);
-            _sizeTextObject.text = __size.ToString();
+
+            size = Mathf.Clamp(size, CanvasOptions.MINIMUM_SIZE, CanvasOptions.MAXIMUM_SIZE);
+            _pixelCanvas.ChangeSize(size);
+            _sizeTextObject.text = size.ToString();
             _currentSizeText = _sizeTextObject.text;
         }
     }
