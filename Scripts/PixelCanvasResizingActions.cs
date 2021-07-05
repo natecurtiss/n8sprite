@@ -1,13 +1,12 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace N8Sprite
 {
     [RequireComponent(typeof(TMP_InputField))]
     public sealed class PixelCanvasResizingActions : MonoBehaviour
     {
-        [FormerlySerializedAs("PixelCanvas")] [SerializeField]
+        [SerializeField]
         private PixelCanvas _pixelCanvas;
         
         private TMP_InputField _sizeTextObject;

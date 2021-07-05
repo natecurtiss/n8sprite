@@ -8,7 +8,7 @@ namespace N8Sprite
     [RequireComponent(typeof(Image))]
     public sealed class CurrentColor : MonoBehaviour
     {
-        [FormerlySerializedAs("SwitchColorAnimationDuration")] [FormerlySerializedAs("AnimationDuration")] [SerializeField, Range(0.1f, 1f)]
+        [SerializeField]
         private float _switchColorAnimationDuration = 0.1f;
         
         private Image _image;

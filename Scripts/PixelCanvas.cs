@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace N8Sprite
@@ -9,9 +8,9 @@ namespace N8Sprite
     [RequireComponent(typeof(RawImage), typeof(RectTransform))]
     public sealed class PixelCanvas : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [FormerlySerializedAs("Parent")] [SerializeField]
+        [SerializeField]
         private RectTransform _parent;
-        [FormerlySerializedAs("ResizeAnimationTime")] [SerializeField]
+        [SerializeField]
         private float _resizeAnimationTime = 0.1f;
         
         private RawImage _rawImage;

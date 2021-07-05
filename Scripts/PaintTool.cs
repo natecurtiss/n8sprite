@@ -9,9 +9,9 @@ namespace N8Sprite
     {
         private static event Action<Tool> OnToolChanged;
 
-        [FormerlySerializedAs("_selectedAnimatorBoolName")] [FormerlySerializedAs("_selectedAnimatorBoolean")] [FormerlySerializedAs("SelectedAnimatorBoolean")] [SerializeField]
+        [SerializeField]
         private string _selectedAnimatorBool = "Selected";
-        [FormerlySerializedAs("ThisTool")] [SerializeField]
+        [SerializeField]
         private Tool _thisTool;
         
         private Animator _animator;

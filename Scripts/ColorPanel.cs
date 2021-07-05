@@ -5,7 +5,7 @@ namespace N8Sprite
 {
     public sealed class ColorPanel : MonoBehaviour
     {
-        [FormerlySerializedAs("_colorImage")] [FormerlySerializedAs("ColorImage")] [SerializeField]
+        [SerializeField]
         private ColorImage _colorImagePrefab;
         
         private Transform _transform;
