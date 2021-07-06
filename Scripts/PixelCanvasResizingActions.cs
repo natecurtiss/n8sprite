@@ -18,15 +18,15 @@ namespace N8Sprite
 
         public void OnNewSizeInputted(string sizeText)
         {
-            if (!int.TryParse(sizeText, out var size))
+            if (!int.TryParse(sizeText, out var __size))
             {
                 _sizeTextObject.text = _currentSizeText;
                 return;
             }
 
-            size = Mathf.Clamp(size, CanvasData.MINIMUM_SIZE, CanvasData.MAXIMUM_SIZE);
-            _pixelCanvas.ChangeSize(size);
-            _sizeTextObject.text = size.ToString();
+            __size = Mathf.Clamp(__size, CanvasData.MINIMUM_SIZE, CanvasData.MAXIMUM_SIZE);
+            _pixelCanvas.ChangeSize(__size);
+            _sizeTextObject.text = __size.ToString();
             _currentSizeText = _sizeTextObject.text;
         }
     }

@@ -13,10 +13,10 @@ namespace N8Sprite
 
         private void Start()
         {
-            foreach (var color in ColorGenerator.AllColors)
+            foreach (ColorContainer __color in ColorGenerator.AllColors)
             {
-                var colorImage = Instantiate(_colorImagePrefab, _transform);
-                colorImage.Color = color;
+                ColorImage __colorImage = Instantiate(_colorImagePrefab, _transform);
+                __colorImage.Color = __color;
             }
         }
     }

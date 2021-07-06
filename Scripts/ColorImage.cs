@@ -8,7 +8,7 @@ namespace N8Sprite
     {
         private ColorContainer _color;
         private Image _image;
-        
+
         public ColorContainer Color
         {
             set
@@ -19,7 +19,7 @@ namespace N8Sprite
         }
 
         private void Awake() => _image = GetComponent<Image>();
-        
+
         public void ChangeSelectedColor() => CanvasData.SelectedColor = _color.Color;
     }
 }

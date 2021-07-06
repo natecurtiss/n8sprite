@@ -29,8 +29,8 @@ namespace N8Sprite
         {
             get
             {
-                UnityEngine.Color.RGBToHSV(Color, out var hue, out var saturation, out var value);
-                return Mathf.RoundToInt(hue * 10f);
+                UnityEngine.Color.RGBToHSV(Color, out float __hue, out float __saturation, out float __value);
+                return Mathf.RoundToInt(__hue * 10f);
             }
         }
 

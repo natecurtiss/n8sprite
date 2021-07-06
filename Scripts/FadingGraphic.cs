@@ -1,5 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,13 +20,6 @@ namespace N8Sprite
         {
             _graphic.DOFade(!_isVisible ? 1f : 0f, _animationDuration);
             _isVisible = !_isVisible;
-            for (int i = 0; i < length; i++)
-            {
-                var thing = "hello"
-                string.Format($"thing{e}")
-                @MetadataBuilder
-                #if TRACE
-            }
         }
     }
 }

@@ -68,8 +68,8 @@ namespace N8Sprite
         /// <param name="color"> The <see cref="Color"/> to match. </param>
         public static ColorContainer MatchToColorContainer(this Color color)
         {
-            foreach (var colorContainer in AllColors)
-                if (colorContainer.Color == color) return colorContainer;
+            foreach (ColorContainer __colorContainer in AllColors)
+                if (__colorContainer.Color == color) return __colorContainer;
             return new ColorContainer(Color.clear, ConsoleColor.Black);
         }
 
@@ -91,23 +91,24 @@ namespace N8Sprite
         /// </summary>
         private static IEnumerable<ColorContainer> GenerateMixedColors()
         {
-            var mixedColors = new List<ColorContainer>();
-            foreach (var baseColor in _baseColors)
+            List<ColorContainer> __mixedColors = new List<ColorContainer>();
+            foreach (ColorContainer __baseColor in _baseColors)
             {
-                foreach (var otherBaseColor in _baseColors)
+                foreach (ColorContainer __otherBaseColor in _baseColors)
                 {
-                    var mixedColor = Color32.Lerp(baseColor.Color, otherBaseColor.Color, 0.5f);
-                    var newColor = new ColorContainer(mixedColor, baseColor.ForegroundColor, otherBaseColor.ForegroundColor);
+                    Color32 __mixedColor = Color32.Lerp(__baseColor.Color, __otherBaseColor.Color, 0.5f);
+                    ColorContainer __newColor = new ColorContainer(__mixedColor, __baseColor.ForegroundColor, __otherBaseColor.ForegroundColor);
 
-                    var colorAlreadyExists = false;
-                    foreach (var existingColor in mixedColors.Where(existingColor => existingColor.Color.IsEqualTo(newColor.Color))) colorAlreadyExists = true;
-                    foreach (var existingColor in _baseColors.Where(existingColor => existingColor.Color.IsEqualTo(newColor.Color))) colorAlreadyExists = true;
+                    bool __colorAlreadyExists = false;
+                    foreach (ColorContainer __existingColor in __mixedColors.Where
+                        (existingColor => existingColor.Color.IsEqualTo(__newColor.Color))) __colorAlreadyExists = true;
+                    foreach (ColorContainer __existingColor in _baseColors.Where
+                        (existingColor => existingColor.Color.IsEqualTo(__newColor.Color))) __colorAlreadyExists = true;
 
-                    if (!colorAlreadyExists) mixedColors.Add(newColor);
+                    if (!__colorAlreadyExists) __mixedColors.Add(__newColor);
                 }
             }
-
-            return mixedColors;
+            return __mixedColors;
         }
 
         /// <summary>
@@ -117,35 +118,34 @@ namespace N8Sprite
         /// </summary>
         private static IEnumerable<ColorContainer> GenerateMixedColorsFull()
         {
-            var mixedColors = new List<ColorContainer>();
-            foreach (var baseColor in _baseColors)
+            List<ColorContainer> __mixedColors = new List<ColorContainer>();
+            foreach (ColorContainer __baseColor in _baseColors)
             {
-                foreach (var otherBaseColor in _baseColors)
+                foreach (ColorContainer __otherBaseColor in _baseColors)
                 {
-                    var mixedColor = Color32.Lerp(baseColor.Color, otherBaseColor.Color, 0.5f);
-                    var newColor = new ColorContainer(mixedColor, baseColor.ForegroundColor, otherBaseColor.ForegroundColor);
+                    Color32 __mixedColor = Color32.Lerp(__baseColor.Color, __otherBaseColor.Color, 0.5f);
+                    ColorContainer __newColor = new ColorContainer(__mixedColor, __baseColor.ForegroundColor, __otherBaseColor.ForegroundColor);
 
-                    var colorAlreadyExists = false;
-                    foreach (var existingColor in mixedColors)
+                    bool __colorAlreadyExists = false;
+                    foreach (ColorContainer __existingColor in __mixedColors)
                     {
-                        if (newColor.ForegroundColor == existingColor.ForegroundColor && newColor.BackgroundColor == existingColor.BackgroundColor)
+                        if (__newColor.ForegroundColor == __existingColor.ForegroundColor && __newColor.BackgroundColor == __existingColor.BackgroundColor)
                         {
-                            colorAlreadyExists = true;
+                            __colorAlreadyExists = true;
                             break;
                         }
 
-                        if (newColor.ForegroundColor == existingColor.BackgroundColor && newColor.BackgroundColor == existingColor.ForegroundColor)
+                        if (__newColor.ForegroundColor == __existingColor.BackgroundColor && __newColor.BackgroundColor == __existingColor.ForegroundColor)
                         {
-                            colorAlreadyExists = true;
+                            __colorAlreadyExists = true;
                             break;
                         }
                     }
-
-                    if (!colorAlreadyExists) mixedColors.Add(newColor);
+                    if (!__colorAlreadyExists) __mixedColors.Add(__newColor);
                 }
             }
 
-            return mixedColors;
+            return __mixedColors;
         }
     }
 }

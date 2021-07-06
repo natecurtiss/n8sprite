@@ -23,9 +23,14 @@ namespace N8Sprite
         {
             get
             {
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(_rectTransform, Input.mousePosition, Camera.main, out var localPoint);
-                var textureCoordinate = new Vector2Int(Mathf.FloorToInt(localPoint.x + _texture.width / 2f), Mathf.FloorToInt(localPoint.y + _texture.height / 2f));
-                return textureCoordinate;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle
+                    (_rectTransform, Input.mousePosition, Camera.main, out var __localPoint);
+                Vector2Int __textureCoordinate = new Vector2Int
+                (
+                    Mathf.FloorToInt(__localPoint.x + _texture.width / 2f), 
+                    Mathf.FloorToInt(__localPoint.y + _texture.height / 2f)
+                );
+                return __textureCoordinate;
             }
         }
 
@@ -54,29 +59,29 @@ namespace N8Sprite
             {
                 filterMode = FilterMode.Point, wrapMode = TextureWrapMode.Clamp
             };
-            for (var x = 0; x < _texture.width; x++)
-                for (var y = 0; y < _texture.height; y++)
-                    _texture.SetPixel(x, y, Color.clear);
+            for (int __x = 0; __x < _texture.width; __x++)
+                for (int __y = 0; __y < _texture.height; __y++)
+                    _texture.SetPixel(__x, __y, Color.clear);
             _texture.Apply();
             _rawImage.texture = _texture;
         }
 
         private void Paint()
         {
-            var textureCoordinate = CurrentPixelClicked;
-            var colorToPaint = CanvasData.SelectedTool == Tool.Brush ? CanvasData.SelectedColor : Color.clear;
-            _texture.SetPixel(textureCoordinate.x, textureCoordinate.y, colorToPaint);
+            Vector2Int __textureCoordinate = CurrentPixelClicked;
+            Color __colorToPaint = CanvasData.SelectedTool == Tool.Brush ? CanvasData.SelectedColor : Color.clear;
+            _texture.SetPixel(__textureCoordinate.x, __textureCoordinate.y, __colorToPaint);
             _texture.Apply();
         }
 
         public void ChangeSize(int size)
         {
             CanvasData.Size = size;
-            var localScale = _rectTransform.localScale;
-            localScale.x = 1 * (CanvasData.MINIMUM_SIZE / (float) size);
-            localScale.y = localScale.x;
+            Vector3 __localScale = _rectTransform.localScale;
+            __localScale.x = 1 * (CanvasData.MINIMUM_SIZE / (float) size);
+            __localScale.y = __localScale.x;
             _rectTransform.DOKill();
-            _rectTransform.DOScale(localScale, _resizeAnimationTime);
+            _rectTransform.DOScale(__localScale, _resizeAnimationTime);
         }
     }
 }
