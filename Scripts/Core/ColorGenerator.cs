@@ -45,7 +45,7 @@ namespace N8Sprite
         /// <summary>
         /// All of the possible <see cref="ConsoleColor" /> combinations.
         /// </summary>
-        public static IEnumerable<ColorContainer> AllColors
+        internal static IEnumerable<ColorContainer> AllColors
         {
             get
             {

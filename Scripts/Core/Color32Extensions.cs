@@ -5,7 +5,7 @@ namespace N8Sprite
     /// <summary>
     /// A set of extension methods for the <see cref="Color32"/> struct.
     /// </summary>
-    public static class Color32Extensions
+    internal static class Color32Extensions
     {
         /// <summary>
         /// Returns true if the <see cref="Color32.r">red,</see> <see cref="Color32.g">green,</see>

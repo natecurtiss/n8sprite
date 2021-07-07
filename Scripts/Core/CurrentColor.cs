@@ -1,12 +1,11 @@
 ﻿using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace N8Sprite
 {
     [RequireComponent(typeof(Image))]
-    public sealed class CurrentColor : MonoBehaviour
+    internal sealed class CurrentColor : MonoBehaviour
     {
         [SerializeField]
         private float _switchColorAnimationDuration = 0.1f;

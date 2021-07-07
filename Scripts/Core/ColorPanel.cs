@@ -2,7 +2,7 @@
 
 namespace N8Sprite
 {
-    public sealed class ColorPanel : MonoBehaviour
+    internal sealed class ColorPanel : MonoBehaviour
     {
         [SerializeField]
         private ColorImage _colorImagePrefab;

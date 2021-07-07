@@ -7,21 +7,24 @@ namespace N8Sprite
         /// <summary>
         /// The maximum size of the <see cref="PixelCanvas"/> in pixels.
         /// </summary>
-        public const int MAXIMUM_SIZE = 128;
+        internal const int MAXIMUM_SIZE = 128;
         /// <summary>
         /// The minimum size of the <see cref="PixelCanvas"/> in pixels.
         /// </summary>
-        public const int MINIMUM_SIZE = 8;
+        internal const int MINIMUM_SIZE = 8;
+        /// <summary>
+        /// The size of the <see cref="PixelCanvas">PixelCanvas.</see>
+        /// </summary>
         public static int Size { get; set; } = MINIMUM_SIZE;
         /// <summary>
         /// Pixels will be painted if equal to <see cref="Tool.Brush"/>, and will be erased if equal to
         /// <see cref="Tool.Eraser">Tool.Eraser.</see>
         /// </summary>
-        public static Tool SelectedTool { get; set; } = Tool.Brush;
+        internal static Tool SelectedTool { get; set; } = Tool.Brush;
         /// <summary>
         /// The <see cref="Color"/> that will be painted to the <see cref="PixelCanvas"/>
         /// if <see cref="SelectedTool"/> == <see cref="Tool.Brush">Tool.Brush.</see>
         /// </summary>
-        public static Color SelectedColor { get; set; } = Color.black;
+        internal static Color SelectedColor { get; set; } = Color.black;
     }
 }

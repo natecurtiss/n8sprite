@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 namespace N8Sprite
 {
     [RequireComponent(typeof(Animator))]
-    public sealed class PaintTool : MonoBehaviour
+    internal sealed class PaintTool : MonoBehaviour
     {
         private static event Action<Tool> OnToolChanged;
 
@@ -49,7 +49,7 @@ namespace N8Sprite
         private void ToolChanged(Tool tool) => _animator.SetBool(_selectedAnimatorBool, tool == _thisTool);
     }
 
-    public enum Tool
+    internal enum Tool
     {
         Brush,
         Eraser

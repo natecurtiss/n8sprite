@@ -4,7 +4,7 @@ using UnityEngine;
 namespace N8Sprite
 {
     [RequireComponent(typeof(TMP_InputField))]
-    public sealed class PixelCanvasResizingActions : MonoBehaviour
+    internal sealed class PixelCanvasResizingActions : MonoBehaviour
     {
         [SerializeField]
         private PixelCanvas _pixelCanvas;

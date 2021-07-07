@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using AnotherFileBrowser.Windows;
-using UnityEditor;
 using UnityEngine;
 
 namespace N8Sprite.SaveSystem

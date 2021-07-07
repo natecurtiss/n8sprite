@@ -1,0 +1,16 @@
+{
+    "name": "Effects",
+    "rootNamespace": "N8Sprite.Effects",
+    "references": [
+        "GUID:25ce8b5d2d5bc1545a122d8c6dc88edb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

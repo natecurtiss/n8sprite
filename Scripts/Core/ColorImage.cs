@@ -4,7 +4,7 @@ using UnityEngine.UI;
 namespace N8Sprite
 {
     [RequireComponent(typeof(Image))]
-    public sealed class ColorImage : MonoBehaviour
+    internal sealed class ColorImage : MonoBehaviour
     {
         private ColorContainer _color;
         private Image _image;

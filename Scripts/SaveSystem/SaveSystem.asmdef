@@ -1,0 +1,17 @@
+{
+    "name": "SaveSystem",
+    "rootNamespace": "N8Sprite.SaveSystem",
+    "references": [
+        "GUID:8690e40921a7c784c991dfb68b0cca8c",
+        "GUID:9076015d94ff7bc4e8e18623a28575bc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
