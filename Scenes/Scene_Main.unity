@@ -1592,7 +1592,7 @@ GameObject:
   - component: {fileID: 2028753736}
   - component: {fileID: 2028753734}
   m_Layer: 5
-  m_Name: Texture_Canvas
+  m_Name: Texture_PixelCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1860,7 +1860,7 @@ GameObject:
   - component: {fileID: 4603260520434077372}
   - component: {fileID: 4603260520434077371}
   - component: {fileID: 4603260520434077374}
-  - component: {fileID: 4603260520434077373}
+  - component: {fileID: 4603260520434077375}
   m_Layer: 5
   m_Name: Button_Save
   m_TagString: Untagged
@@ -1925,20 +1925,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603260520434077369}
   m_CullTransparentMesh: 1
---- !u!114 &4603260520434077373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4603260520434077369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a058f896b1d149939a7ee76034bae6d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _popAnimationDuration: 0.3
-  _popAnimationPower: 0.2
 --- !u!114 &4603260520434077374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1983,9 +1969,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4603260520434077373}
-        m_TargetAssemblyTypeName: N8Sprite.PopAnimation, Assembly-CSharp
-        m_MethodName: Play
+      - m_Target: {fileID: 4603260520434077375}
+        m_TargetAssemblyTypeName: N8Sprite.SaveSpriteActions, Assembly-CSharp
+        m_MethodName: SaveSprite
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1995,6 +1981,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4603260520434077375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4603260520434077369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2eec9a566fb4811955a1d1463e87343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pixelCanvas: {fileID: 2028753734}
 --- !u!222 &6822624463045111889
 CanvasRenderer:
   m_ObjectHideFlags: 0

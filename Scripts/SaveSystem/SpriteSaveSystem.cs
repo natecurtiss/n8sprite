@@ -1,7 +1,9 @@
 ﻿using System.IO;
+using AnotherFileBrowser.Windows;
+using UnityEditor;
 using UnityEngine;
 
-namespace N8Sprite
+namespace N8Sprite.SaveSystem
 {
     public static class SpriteSaveSystem
     {
@@ -33,7 +35,19 @@ namespace N8Sprite
                 }
                 __fileData += "\n";
             }
-            File.WriteAllText($"{Application.dataPath}/test.n8sprite", __fileData);
+
+            BrowserProperties __browserProperties = new BrowserProperties
+            {
+                Filter = "n8sprite files (*.n8sprite)|*.n8sprite", 
+                FilterIndex = 0
+            };
+            new FileBrowser().SaveFileBrowser
+            (
+                __browserProperties, 
+                "NewSprite", 
+                ".n8sprite",
+                path => File.WriteAllText(path, __fileData)
+            );
         }
     }
 }

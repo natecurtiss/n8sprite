@@ -16,7 +16,7 @@ namespace N8Sprite
 
         private void Awake() => _graphic = GetComponent<Graphic>();
 
-        public void Toggle(float something)
+        public void Toggle()
         {
             _graphic.DOFade(!_isVisible ? 1f : 0f, _animationDuration);
             _isVisible = !_isVisible;

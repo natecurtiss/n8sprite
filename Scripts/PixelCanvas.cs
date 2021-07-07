@@ -15,9 +15,9 @@ namespace N8Sprite
         
         private RawImage _rawImage;
         private RectTransform _rectTransform;
-        private Texture2D _texture;
-        
         private bool _isMouseOver;
+        
+        public Texture2D Texture { get; private set; }
 
         private Vector2Int CurrentPixelClicked
         {
@@ -27,8 +27,8 @@ namespace N8Sprite
                     (_rectTransform, Input.mousePosition, Camera.main, out var __localPoint);
                 Vector2Int __textureCoordinate = new Vector2Int
                 (
-                    Mathf.FloorToInt(__localPoint.x + _texture.width / 2f), 
-                    Mathf.FloorToInt(__localPoint.y + _texture.height / 2f)
+                    Mathf.FloorToInt(__localPoint.x + Texture.width / 2f), 
+                    Mathf.FloorToInt(__localPoint.y + Texture.height / 2f)
                 );
                 return __textureCoordinate;
             }
@@ -50,28 +50,27 @@ namespace N8Sprite
         private void Update()
         {
             if (Input.GetMouseButton(0) && _isMouseOver) Paint();
-            if (Input.GetKeyDown(KeyCode.Space)) SpriteSaveSystem.Save(_texture); 
         }
 
         private void CreateTexture(Vector2Int size)
         {
-            _texture = new Texture2D(size.x, size.y, TextureFormat.ARGB32, false)
+            Texture = new Texture2D(size.x, size.y, TextureFormat.ARGB32, false)
             {
                 filterMode = FilterMode.Point, wrapMode = TextureWrapMode.Clamp
             };
-            for (int __x = 0; __x < _texture.width; __x++)
-                for (int __y = 0; __y < _texture.height; __y++)
-                    _texture.SetPixel(__x, __y, Color.clear);
-            _texture.Apply();
-            _rawImage.texture = _texture;
+            for (int __x = 0; __x < Texture.width; __x++)
+                for (int __y = 0; __y < Texture.height; __y++)
+                    Texture.SetPixel(__x, __y, Color.clear);
+            Texture.Apply();
+            _rawImage.texture = Texture;
         }
 
         private void Paint()
         {
             Vector2Int __textureCoordinate = CurrentPixelClicked;
             Color __colorToPaint = CanvasData.SelectedTool == Tool.Brush ? CanvasData.SelectedColor : Color.clear;
-            _texture.SetPixel(__textureCoordinate.x, __textureCoordinate.y, __colorToPaint);
-            _texture.Apply();
+            Texture.SetPixel(__textureCoordinate.x, __textureCoordinate.y, __colorToPaint);
+            Texture.Apply();
         }
 
         public void ChangeSize(int size)
