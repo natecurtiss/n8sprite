@@ -1,5 +1,5 @@
 # n8sprite
-The pixel art sprite editor formerly used to make sprites for my open-source C# game engine, n8engine.
+A pixel art sprite editor previously used to make sprites for my open-source C# game engine, n8engine.
 
 The engine no longer uses the n8sprite file format, so this is now useless and depricated, but feel free to do whatever you want with it.
 
