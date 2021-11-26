@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OverlayLeft_Controller
+  m_Name: Left Overlay
   m_Controller: {fileID: 9100000, guid: 4da7d53f41d91c243adff7cda1cb6274, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: c0806630ba867e64d9e337baa8afde9d, type: 2}
