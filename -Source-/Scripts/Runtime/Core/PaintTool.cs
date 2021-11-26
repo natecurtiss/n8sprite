@@ -5,28 +5,28 @@ using UnityEngine.Serialization;
 namespace N8Sprite
 {
     [RequireComponent(typeof(Animator))]
-    internal sealed class PaintTool : MonoBehaviour
+    sealed class PaintTool : MonoBehaviour
     {
-        private static event Action<Tool> OnToolChanged;
+        static event Action<Tool> OnToolChanged;
 
-        [SerializeField]
-        private Tool _thisTool;
-        [SerializeField]
-        private string _selectedAnimatorBool = "Selected";
-        
-        private Animator _animator;
-        
-        private void Awake()
+        [SerializeField] 
+        Tool _thisTool;
+        [SerializeField] 
+        string _selectedAnimatorBool = "Selected";
+
+        Animator _animator;
+
+        void Awake()
         {
             _animator = GetComponent<Animator>();
             OnToolChanged += ToolChanged;
         }
-        
-        private void Start() => OnToolChanged?.Invoke(Tool.Brush);
 
-        private void OnDestroy() => OnToolChanged -= ToolChanged;
+        void Start() => OnToolChanged?.Invoke(Tool.Brush);
 
-        private void Update()
+        void OnDestroy() => OnToolChanged -= ToolChanged;
+
+        void Update()
         {
             if (Input.GetKeyDown(KeyCode.B))
             {
@@ -46,10 +46,10 @@ namespace N8Sprite
             OnToolChanged?.Invoke(_thisTool);
         }
 
-        private void ToolChanged(Tool tool) => _animator.SetBool(_selectedAnimatorBool, tool == _thisTool);
+        void ToolChanged(Tool tool) => _animator.SetBool(_selectedAnimatorBool, tool == _thisTool);
     }
 
-    internal enum Tool
+    enum Tool
     {
         Brush,
         Eraser

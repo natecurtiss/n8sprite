@@ -8,29 +8,29 @@ namespace N8Sprite
     [RequireComponent(typeof(RawImage), typeof(RectTransform))]
     public sealed class PixelCanvas : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField]
-        private RectTransform _parent;
-        [SerializeField]
-        private float _resizeAnimationTime = 0.1f;
-        
-        private RawImage _rawImage;
-        private RectTransform _rectTransform;
-        private bool _isMouseOver;
+        [SerializeField] 
+        RectTransform _parent;
+        [SerializeField] 
+        float _resizeAnimationTime = 0.1f;
+
+        RawImage _rawImage;
+        RectTransform _rectTransform;
+        bool _isMouseOver;
         
         public Texture2D Texture { get; private set; }
 
-        private Vector2Int CurrentPixelClicked
+        Vector2Int CurrentPixelClicked
         {
             get
             {
                 RectTransformUtility.ScreenPointToLocalPointInRectangle
-                    (_rectTransform, Input.mousePosition, Camera.main, out var __localPoint);
-                Vector2Int __textureCoordinate = new Vector2Int
+                    (_rectTransform, Input.mousePosition, Camera.main, out var localPoint);
+                var textureCoordinate = new Vector2Int
                 (
-                    Mathf.FloorToInt(__localPoint.x + Texture.width / 2f), 
-                    Mathf.FloorToInt(__localPoint.y + Texture.height / 2f)
+                    Mathf.FloorToInt(localPoint.x + Texture.width / 2f), 
+                    Mathf.FloorToInt(localPoint.y + Texture.height / 2f)
                 );
-                return __textureCoordinate;
+                return textureCoordinate;
             }
         }
 
@@ -38,49 +38,49 @@ namespace N8Sprite
 
         public void OnPointerExit(PointerEventData eventData) => _isMouseOver = false;
 
-        private void Awake()
+        void Awake()
         {
             _rectTransform = GetComponent<RectTransform>();
             _rawImage = GetComponent<RawImage>();
             _parent.sizeDelta = Vector2.one * CanvasData.MAXIMUM_SIZE;
         }
 
-        private void Start() => CreateTexture(Vector2Int.one * CanvasData.MAXIMUM_SIZE);
+        void Start() => CreateTexture(Vector2Int.one * CanvasData.MAXIMUM_SIZE);
 
-        private void Update()
+        void Update()
         {
             if (Input.GetMouseButton(0) && _isMouseOver) Paint();
         }
 
-        private void CreateTexture(Vector2Int size)
+        void CreateTexture(Vector2Int size)
         {
             Texture = new Texture2D(size.x, size.y, TextureFormat.ARGB32, false)
             {
                 filterMode = FilterMode.Point, wrapMode = TextureWrapMode.Clamp
             };
-            for (int __x = 0; __x < Texture.width; __x++)
-                for (int __y = 0; __y < Texture.height; __y++)
-                    Texture.SetPixel(__x, __y, Color.clear);
+            for (var x = 0; x < Texture.width; x++)
+                for (var y = 0; y < Texture.height; y++)
+                    Texture.SetPixel(x, y, Color.clear);
             Texture.Apply();
             _rawImage.texture = Texture;
         }
 
-        private void Paint()
+        void Paint()
         {
-            Vector2Int __textureCoordinate = CurrentPixelClicked;
-            Color __colorToPaint = CanvasData.SelectedTool == Tool.Brush ? CanvasData.SelectedColor : Color.clear;
-            Texture.SetPixel(__textureCoordinate.x, __textureCoordinate.y, __colorToPaint);
+            var textureCoordinate = CurrentPixelClicked;
+            var colorToPaint = CanvasData.SelectedTool == Tool.Brush ? CanvasData.SelectedColor : Color.clear;
+            Texture.SetPixel(textureCoordinate.x, textureCoordinate.y, colorToPaint);
             Texture.Apply();
         }
 
         public void ChangeSize(int size)
         {
             CanvasData.Size = size;
-            Vector3 __localScale = _rectTransform.localScale;
-            __localScale.x = 1 * (CanvasData.MINIMUM_SIZE / (float) size);
-            __localScale.y = __localScale.x;
+            var localScale = _rectTransform.localScale;
+            localScale.x = 1 * (CanvasData.MINIMUM_SIZE / (float) size);
+            localScale.y = localScale.x;
             _rectTransform.DOKill();
-            _rectTransform.DOScale(__localScale, _resizeAnimationTime);
+            _rectTransform.DOScale(localScale, _resizeAnimationTime);
         }
     }
 }

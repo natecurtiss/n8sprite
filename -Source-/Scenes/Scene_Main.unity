@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 54508736}
   - component: {fileID: 54508735}
   m_Layer: 5
-  m_Name: UI_Panels
+  m_Name: Panels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 211099015}
   - component: {fileID: 211099016}
   m_Layer: 5
-  m_Name: LayoutGroup_Buttons
+  m_Name: Lower Section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 359093132}
   - component: {fileID: 359093131}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420034}
   m_Layer: 0
-  m_Name: Camera_Main
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 585521432}
   - component: {fileID: 585521431}
   m_Layer: 5
-  m_Name: Background_Buttons
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -666,7 +666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 607822614}
   m_Layer: 5
-  m_Name: Panel_Buttons
+  m_Name: Buttons Section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 660650469}
   - component: {fileID: 660650471}
   m_Layer: 5
-  m_Name: Image_CurrentColor
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 704979118}
   - component: {fileID: 704979119}
   m_Layer: 5
-  m_Name: Panel_Colors
+  m_Name: Colors Section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -967,7 +967,7 @@ GameObject:
   - component: {fileID: 817291016}
   - component: {fileID: 817291015}
   m_Layer: 5
-  m_Name: Image_Viewport
+  m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1057,7 +1057,7 @@ GameObject:
   - component: {fileID: 1088513496}
   - component: {fileID: 1088513495}
   m_Layer: 5
-  m_Name: UI_Viewport
+  m_Name: Viewport Section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1154,7 +1154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1362642137}
   m_Layer: 5
-  m_Name: Panel_CurrentColor
+  m_Name: Selected Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1192,7 +1192,7 @@ GameObject:
   - component: {fileID: 1371055501}
   - component: {fileID: 1371055500}
   m_Layer: 5
-  m_Name: Border_CurrentColor
+  m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1269,7 +1269,7 @@ GameObject:
   - component: {fileID: 1373688466}
   - component: {fileID: 1373688468}
   m_Layer: 5
-  m_Name: Background_Colors
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1363,7 +1363,7 @@ GameObject:
   - component: {fileID: 1496339175}
   - component: {fileID: 1496339176}
   m_Layer: 5
-  m_Name: LayoutGroup_Tools
+  m_Name: Tools
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1426,7 +1426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1679067942}
   m_Layer: 5
-  m_Name: Panel_PixelCanvasSize
+  m_Name: Canvas Size
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1562,7 +1562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7197520726000810346, guid: 106f43d6af0c7a5458f47c8ede10a856, type: 3}
       propertyPath: m_Name
-      value: Tool_Eraser
+      value: Eraser Button
       objectReference: {fileID: 0}
     - target: {fileID: 7197520726000810350, guid: 106f43d6af0c7a5458f47c8ede10a856, type: 3}
       propertyPath: ThisTool
@@ -1592,7 +1592,7 @@ GameObject:
   - component: {fileID: 2028753736}
   - component: {fileID: 2028753734}
   m_Layer: 5
-  m_Name: Texture_PixelCanvas
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1679,7 +1679,7 @@ GameObject:
   - component: {fileID: 2054191151}
   - component: {fileID: 2054191150}
   m_Layer: 5
-  m_Name: Image_Background
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1761,7 +1761,7 @@ GameObject:
   - component: {fileID: 2095890482}
   - component: {fileID: 2095890484}
   m_Layer: 5
-  m_Name: Image_Grid
+  m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1862,7 +1862,7 @@ GameObject:
   - component: {fileID: 4603260520434077374}
   - component: {fileID: 4603260520434077375}
   m_Layer: 5
-  m_Name: Button_Save
+  m_Name: Save Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2315,7 +2315,7 @@ GameObject:
   - component: {fileID: 6822624464554830098}
   - component: {fileID: 4371383731601807379}
   m_Layer: 5
-  m_Name: InputField_Width
+  m_Name: Size Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2466,7 +2466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7197520726000810346, guid: 106f43d6af0c7a5458f47c8ede10a856, type: 3}
       propertyPath: m_Name
-      value: Tool_Brush
+      value: Brush Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 106f43d6af0c7a5458f47c8ede10a856, type: 3}
@@ -2534,7 +2534,7 @@ GameObject:
   - component: {fileID: 7260382515100003459}
   - component: {fileID: 7260382515100003460}
   m_Layer: 5
-  m_Name: Button_Grid-Toggle
+  m_Name: Grid Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

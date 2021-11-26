@@ -7,14 +7,14 @@ namespace N8Sprite
     [RequireComponent(typeof(Graphic))]
     public sealed class FadingGraphic : MonoBehaviour
     {
-        [SerializeField]
-        private float _animationDuration = 0.5f;
-        [SerializeField]
-        private bool _isVisible = true;
+        [SerializeField] 
+        float _animationDuration = 0.5f;
+        [SerializeField] 
+        bool _isVisible = true;
 
-        private Graphic _graphic;
+        Graphic _graphic;
 
-        private void Awake() => _graphic = GetComponent<Graphic>();
+        void Awake() => _graphic = GetComponent<Graphic>();
 
         public void Toggle()
         {

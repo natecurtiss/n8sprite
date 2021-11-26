@@ -4,10 +4,10 @@ using UnityEngine.UI;
 namespace N8Sprite
 {
     [RequireComponent(typeof(Image))]
-    internal sealed class ColorImage : MonoBehaviour
+    sealed class ColorImage : MonoBehaviour
     {
-        private ColorContainer _color;
-        private Image _image;
+        ColorContainer _color;
+        Image _image;
 
         public ColorContainer Color
         {
@@ -18,7 +18,7 @@ namespace N8Sprite
             }
         }
 
-        private void Awake() => _image = GetComponent<Image>();
+        void Awake() => _image = GetComponent<Image>();
 
         public void ChangeSelectedColor() => CanvasData.SelectedColor = _color.Color;
     }
